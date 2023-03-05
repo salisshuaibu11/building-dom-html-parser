@@ -1,18 +1,18 @@
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 
-struct Node {
+pub struct Node {
     children: Vec<Node>,
     node_type: NodeType
 }
 
-enum NodeType {
+pub enum NodeType {
     Text(String),
     Element(ElementData),
     Comment(String)
 }
 
-struct ElementData {
+pub struct ElementData {
     tag_name: String,
     attributes: AttrMap,
 }
@@ -75,7 +75,7 @@ impl fmt::Debug for ElementData {
 }
 
 // Allows us to print our Node as well as its descendeds with indentations
-fn pretty_print(n: &Node, indent_size: usize) {
+pub fn pretty_print(n: &Node, indent_size: usize) {
     // Iterate from 0 to indent_size and then map a closure
     // That will return a space into a vector string and this
     // Will give us approprite indent size for everything that we need
